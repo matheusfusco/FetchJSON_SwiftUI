@@ -15,6 +15,10 @@ struct CourseRowView : View {
     var body: some View {
         VStack(alignment: .leading) {
             ImageViewWidget(imageUrl: course.imageUrl)
+                .tapAction {
+                    guard let url = URL(string: self.course.link) else { return }
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
             Text(course.name)
         }
     }
